@@ -16,25 +16,38 @@ public class PP2P15 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        int m;
         int[][] arreglo = new int[10][10];
         //es un arreglo de 10 por 10
         llenarArreglo(arreglo);
+        //Mostrar(m);
     }
     public static void llenarArreglo(int [][]a){
-        int i,j,p,m,q;
+        int i,j=0,p,m=0,q;
         //aqui declaro la funcion random y como se llamara
         Random numAleatorio = new Random();
-           for(i=0;i<10;i++){
-               m = numAleatorio.nextInt();
+           for(i=0;i<a.length;i++){
                //cada vez que cambia de celda i se le asignara un valor random
-              for(j=0;j<10;j++){
+              for(j=0;j<a.length;j++){
                //cada vez que cambia de celda j se la asignara un valor random
-               p = numAleatorio.nextInt();   
-               //aqui esta la suma y ensiguida la muestro en pantalla porque acabando j cambiara de celda
-               q = m + p;
-                  System.out.print(p +"\t");
+               a[i][j] = numAleatorio.nextInt();
+               if(j==0){
+                   for(p=0;p<a.length;p++)
+                       m = a[i][j] + m;
+               }
+               a[i][j] = m;
+                  System.out.println(m);
               }
-               System.out.println("\n");
+              if(i==0){
+                  for(q=0;q<a.length-1;q++){
+                      m = a[q][j] + m;
+                  }
+                  a[i][j] = m;
+                  System.out.println(m);
+              }
     }
+    }
+    public static void Mostrar(int m){
+        System.out.println(m);
     }
 }
