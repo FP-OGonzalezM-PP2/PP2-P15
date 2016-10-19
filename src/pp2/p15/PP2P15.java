@@ -22,30 +22,29 @@ public class PP2P15 {
         llenarArreglo(arreglo);
         //Mostrar(m);
     }
-    public static void llenarArreglo(int [][]a){
-        int i,j=0,p,m=0,q;
-        //aqui declaro la funcion random y como se llamara
+     public static void llenarArreglo(int[][] a){
+        int m,j,i;
         Random numAleatorio = new Random();
-           for(i=0;i<a.length;i++){
-               //cada vez que cambia de celda i se le asignara un valor random
-              for(j=0;j<a.length;j++){
-               //cada vez que cambia de celda j se la asignara un valor random
-               a[i][j] = numAleatorio.nextInt();
-               if(j==0){
-                   for(p=0;p<a.length;p++)
-                       m = a[i][j] + m;
-               }
-               a[i][j] = m;
-                  System.out.println(m);
-              }
-              if(i==0){
-                  for(q=0;q<a.length-1;q++){
-                      m = a[q][j] + m;
-                  }
-                  a[i][j] = m;
-                  System.out.println(m);
-              }
-    }
+        for(i=0;i<a.length;i++){
+            for(j=0;j<a.length;j++){
+                if(j==10){
+                    m = 0;
+                    for(j=0;j<a.length-1;j++){
+                        m = a[i][j]+ m;
+                    }
+                    a[i][j] = m;
+                } else a[i][j]=numAleatorio.nextInt(10+1);
+                if(i==10){
+                    m = 0;
+                    for(i=0;i<a.length-1;i++){
+                        m = a[i][j]+ m;
+                    }
+                    a[i][j] = m;
+                }
+                System.out.print(a[i][j] +"\t");
+            }
+            System.out.println("\n");
+        }
     }
     public static void Mostrar(int m){
         System.out.println(m);
