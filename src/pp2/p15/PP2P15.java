@@ -16,14 +16,14 @@ public class PP2P15 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int m;
-        int[][] arreglo = new int[10][10];
-        //es un arreglo de 10 por 10
+        //EL arreglo lo hago de 11x11 para que en la ultima casilla pueda depositar el valor de la suma
+        int[][] arreglo = new int[11][11];
         llenarArreglo(arreglo);
-        //Mostrar(m);
+        Mostrar(arreglo);
     }
-     public static void llenarArreglo(int[][] a){
+     public static int[][] llenarArreglo(int[][] a){
         int m,j,i;
+        //Esta es la nueva función que asigna un valor aleatorio
         Random numAleatorio = new Random();
         for(i=0;i<a.length;i++){
             for(j=0;j<a.length;j++){
@@ -32,8 +32,11 @@ public class PP2P15 {
                     for(j=0;j<a.length-1;j++){
                         m = a[i][j]+ m;
                     }
+                    //En la celda a[i][j] se almacenara el valor de m
                     a[i][j] = m;
-                } else a[i][j]=numAleatorio.nextInt(10+1);
+                } else{
+                    a[i][j]=numAleatorio.nextInt(10+1);
+                }
                 if(i==10){
                     m = 0;
                     for(i=0;i<a.length-1;i++){
@@ -41,12 +44,22 @@ public class PP2P15 {
                     }
                     a[i][j] = m;
                 }
-                System.out.print(a[i][j] +"\t");
             }
-            System.out.println("\n");
         }
+        return a;
+     }
+
+    public static void Mostrar(int [][]a){
+        for(int i=0;i<a.length;i++){
+            for(int j=0;j<a.length;j++){
+                if(j<10 && i<10){
+                 System.out.print(a[i][j]+"\t");   
+                }else{
+                    //El valor de la suma estara entre corchetes
+                 System.out.print("[" +a[i][j] +"]" +"\t");  
+                }
+            }
+            System.out.print("\n");
     }
-    public static void Mostrar(int m){
-        System.out.println(m);
-    }
+}
 }
